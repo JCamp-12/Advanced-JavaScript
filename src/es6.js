@@ -8,6 +8,8 @@
 // const, =>, default parameters, arrow functions default return statements using ()
 
 var food = 'pineapple';
+// var changes to const
+const food = 'pineapple';
 
 var isMyFavoriteFood = function(food) {
   food = food || 'thousand-year-old egg'; //This sets a default value if `food` is falsey
