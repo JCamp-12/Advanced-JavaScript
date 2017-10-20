@@ -8,7 +8,7 @@ const each = (elements, cb) => {
   // based off http://underscorejs.org/#each
 
   for (let i = 0; i < elements.length; i++) {
-    cb(elements[i]);
+    cb(elements[i], i);
   }
 };
 
