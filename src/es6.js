@@ -7,7 +7,7 @@
 //----------------
 // const, =>, default parameters, arrow functions default return statements using ()
 
-var food = 'pineapple';
+//var food = 'pineapple';
 // var changes to const
 const food = 'pineapple';
 
