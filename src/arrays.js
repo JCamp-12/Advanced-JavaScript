@@ -16,11 +16,11 @@ const map = (elements, cb) => {
   // Produces a new array of values by mapping each value in list through a transformation function (iteratee).
   // Return the new array.
 
-  const newArray = [];
+  const resultArray = [];
   for (let i = 0; i < elements.length; i++) {
-    newArray.push(elements[i]);
+    resultArray.push(cb(elements[i]));
   }
-  return newArray;
+  return resultArray;
 };
 
 const reduce = (elements, cb, memo) => {
