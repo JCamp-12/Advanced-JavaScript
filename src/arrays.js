@@ -17,9 +17,13 @@ const map = (elements, cb) => {
   // Return the new array.
 
   const resultArray = [];
-  for (let i = 0; i < elements.length; i++) {
-    resultArray.push(cb(elements[i]));
-  }
+  // for (let i = 0; i < elements.length; i++) {
+  //   resultArray.push(cb(elements[i]));
+  //  THIS IS THE for loop version (above)
+  // THIS IS THE forEach version (below)
+  each(elements, (elem) => {
+    resultArray.push(cb(elem));
+  });
   return resultArray;
 };
 
