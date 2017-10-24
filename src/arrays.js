@@ -20,6 +20,7 @@ const map = (elements, cb) => {
   // for (let i = 0; i < elements.length; i++) {
   //   resultArray.push(cb(elements[i]));
   //  THIS IS THE for loop version (above)
+  //
   // THIS IS THE forEach version (below)
   each(elements, (elem) => {
     resultArray.push(cb(elem));
@@ -31,12 +32,26 @@ const reduce = (elements, cb, memo) => {
   // Combine all elements into a single value going from left to right.
   // Elements will be passed one by one into `cb`.
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
+  //
+  // for(let i = 0; i < elements.length; i++){
+  if (memo === undefined) {
+    memo = elements.shift();
+  }
+  each(elements, (elem) => {
+    memo = cb(memo, elem);
+  });
+  return memo;
 };
 
 const find = (elements, cb) => {
   // Look through each value in `elements` and pass each element to `cb`.
   // If `cb` returns `true` then return that element.
   // Return `undefined` if no elements pass the truth test.
+  each(elements, (elem) => {
+    if (cb[elem] === true) {
+      return true;
+    }
+  });
 };
 
 const filter = (elements, cb) => {
