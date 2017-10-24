@@ -62,6 +62,12 @@ const filter = (elements, cb) => {
 };
 
 const flatten = (elements) => {
+  elements = map(elements, (elem) => {
+    if (Array.isArray(elem)) {
+      return flatten(elem);
+    }
+    return elem;
+  });
   // Flattens a nested array (the nesting can be to any depth).
   // Example: flatten([1, [2], [3, [[4]]]]); => [1, 2, 3, 4];
   const result = [];
