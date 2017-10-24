@@ -34,12 +34,14 @@ const reduce = (elements, cb, memo) => {
   // `memo` is the starting value.  If `memo` is undefined then make `elements[0]` the initial value.
   //
   // for(let i = 0; i < elements.length; i++){
+  let i = 0;
   if (memo === undefined) {
-    memo = elements.shift();
+    memo = elements[0];
+    i = 1;
   }
-  each(elements, (elem) => {
-    memo = cb(memo, elem);
-  });
+  for (; i < elements.length; i++) {
+    memo = cb(memo, elements[i]);
+  }
   return memo;
 };
 
