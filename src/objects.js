@@ -16,6 +16,8 @@ const values = (obj) => {
     return obj[key];
   });
   return vals;
+  // return Object.values(obj);
+  // coming up not a function but clearly is and should pass
 };
 
 const mapObject = (obj, cb) => {
@@ -30,13 +32,25 @@ const mapObject = (obj, cb) => {
 
 const pairs = (obj) => {
   // Convert an object into a list of [key, value] pairs.
-  // http://underscorejs.org/#pairs
+  // http://underscorejs.org/#
+  const pairArray = [];
+  Object.keys(obj).forEach((key) => {
+    const nestPairArr = [];
+    nestPairArr.push(key, obj[key]);
+    pairArray.push(nestPairArr);
+  });
+  return pairArray;
 };
 
 const invert = (obj) => {
   // Returns a copy of the object where the keys have become the values and the values the keys.
   // Assume that all of the object's values will be unique and string serializable.
   // http://underscorejs.org/#invert
+  const newObj = {};
+  Object.keys(obj).forEach((key) => {
+    newObj[obj[key]] = key;
+  });
+  return newObj;
 };
 
 const defaults = (obj, defaultProps) => {
