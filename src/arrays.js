@@ -62,21 +62,34 @@ const filter = (elements, cb) => {
 };
 
 const flatten = (elements) => {
-  elements = map(elements, (elem) => {
-    if (Array.isArray(elem)) {
-      return flatten(elem);
-    }
-    return elem;
-  });
   // Flattens a nested array (the nesting can be to any depth).
   // Example: flatten([1, [2], [3, [[4]]]]); => [1, 2, 3, 4];
-  const result = [];
+  //
+//   elements = map(elements, (elem) => {
+//     if (Array.isArray(elem)) {
+//       return flatten(elem);
+//     }
+//     return elem;
+//   });
+//   const result = [];
+//   each(elements, (elem) => {
+//     if (Array.isArray(elem)) {
+//       const nestedArray = elem;
+//       each(nestedArray, (nestedElem) => {
+//         result.push(nestedElem);
+//       });
+//     } else {
+//       result.push(elem);
+//     }
+//   });
+//   return result;
+// };
+// or
+  let result = [];
   each(elements, (elem) => {
     if (Array.isArray(elem)) {
-      const nestedArray = elem;
-      each(nestedArray, (nestedElem) => {
-        result.push(nestedElem);
-      });
+      const nestedArray = flatten(elem);
+      result = result.concat(nestedArray);
     } else {
       result.push(elem);
     }
